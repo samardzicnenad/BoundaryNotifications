@@ -6,40 +6,42 @@ public class Notification {
     private int user_id, timestamp;
     private String message;
 
-    public Notification(long id, int user_id, int timestamp, String message) {
-        this.id = id;
+	public Notification() {}
+
+	public Notification(long id, int user_id, int timestamp, String message) {
+		this.id = id;
+		this.user_id = user_id;
+		this.timestamp = timestamp;
+		this.message = message;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
-        this.timestamp = timestamp;
-        this.message = message;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public int getUserId() {
-        return user_id;
-    }
-
-    public void setUserId(int user_id) {
-        this.user_id = user_id;
-    }
-
-    public int getTimestamp() {
-        return timestamp;
-    }
+	public int getTimestamp() {
+		return timestamp;
+	}
 
     public void setTimestamp(int timestamp) {
         this.timestamp = timestamp;
     }
 
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage() {
+		return message;
+	}
 
     public void setMessage(String message) {
         this.message = message;
