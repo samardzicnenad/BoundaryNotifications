@@ -1,5 +1,7 @@
 # BoundaryNotifications
 Spring framework Java application - Notifications API
+- Data persistance implemented
+- Server runs on http://localhost:8080
 
 # Requirements
 - jdk
