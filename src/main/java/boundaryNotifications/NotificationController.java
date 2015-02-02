@@ -42,7 +42,7 @@ public class NotificationController {
 			new RowMapper<Notification>() {
 				@Override
 				public Notification mapRow(ResultSet rs, int rowNum) throws SQLException {
-					return new Notification(rs.getLong("id"), rs.getInt("user_id"), rs.getInt("timestamp"), rs.getString("message"));
+					return new Notification(rs.getLong("id"), rs.getInt("user_id"), rs.getInt("timestamp"), rs.getInt("is_read"), rs.getString("message"));
 				}
 			});
 		Notification[] notifications = new Notification[resultList.size()];
@@ -69,11 +69,30 @@ public class NotificationController {
         Map parameters = new HashMap();
         parameters.put("user_id", notification.getUser_id());
         parameters.put("timestamp", notification.getTimestamp());
+        parameters.put("is_read", 0);
         parameters.put("message", notification.getMessage());
         Number notificationId = insertNotification.executeAndReturnKey(parameters);
 
 		// return Notification with associated key
 		notification.setId(notificationId.longValue());
 		return notification;
+    }
+
+    // /notifications/edit/<id>
+    @RequestMapping(value="/notifications/edit/{id}", method=RequestMethod.PUT)
+    @ResponseBody
+    public void editNotification(@PathVariable long id, @RequestBody String newMessage) {
+		// set db access
+        SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
+        dataSource.setDriverClass(org.h2.Driver.class);
+        dataSource.setUrl("jdbc:h2:boundary");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+
+        jdbcTemplate.update(
+			"UPDATE notifications SET message = ? WHERE id = ?",
+			new Object[] {newMessage, id});
     }
 }

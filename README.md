@@ -24,6 +24,12 @@ http://localhost:8080/notifications/by_user/2?limit=5
 <pre>
 http://localhost:8080/notifications
 </pre>
+## 3. PUT /notifications/edit/{id}
+Accepts String argument - new message and updates Notification with id - {id}. Type void.
+### Example
+<pre>
+http://localhost:8080/notifications/edit/4
+</pre>
 
 # Notes:
 - My test application was able to handle ~ 2^10 parallel threads. After that I would get connection denial. Because of that, I created a limitation of the number of concurrent threads.

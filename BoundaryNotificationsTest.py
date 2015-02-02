@@ -37,6 +37,11 @@ def addPost(uid, ts):
 	global start
 	print 'POST request: ' + str(noRequests) + '; time: ' + str(time.time() - start) + ' seconds'
 
+@async
+def addPut(nid):
+	url = 'http://localhost:8080/notifications/edit/' + str(nid)
+	requestPost = requests.put(url, "New Message")
+
 counter = 0
 noRequests = 0
 start = time.time()
@@ -53,3 +58,4 @@ while counter < 20000:
 			addPost(counter, ts)
 			#addGet(counter)
 			counter += 1
+addPut(1)

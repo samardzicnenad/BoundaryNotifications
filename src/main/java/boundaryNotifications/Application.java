@@ -26,6 +26,6 @@ public class Application {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
         //jdbcTemplate.execute("drop table notifications if exists");
-        jdbcTemplate.execute("create table if not exists notifications(id serial, user_id integer, timestamp integer, message varchar(255))");
+        jdbcTemplate.execute("create table if not exists notifications(id serial, user_id integer, timestamp integer, is_read integer, message varchar(255))");
 	}
 }
