@@ -15,9 +15,15 @@ Spring framework Java application - Notifications API
 ## 1. GET /notifications/by_user/user_id(?limit=limit_value)
 Returns the most recent notifications ordered by timestamp descending. If 'limit' parameter is not provided, default value is 3.
 ### Examples
-<pre>GET /notifications/by_user/1
-GET /notifications/by_user/2?limit=5</pre>
+<pre>
+http://localhost:8080/notifications/by_user/1
+http://localhost:8080/notifications/by_user/2?limit=5
+</pre>
 ## 2. POST /notifications
+### Example
+<pre>
+http://localhost:8080/notifications
+</pre>
 
 # Notes:
 - My test application was able to handle ~ 2^10 parallel threads. After that I would get connection denial. Because of that, I created a limitation of the number of concurrent threads.
