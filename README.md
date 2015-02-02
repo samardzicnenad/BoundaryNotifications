@@ -1,7 +1,7 @@
 # BoundaryNotifications
 Spring framework Java application - Notifications API
 - Server runs on http://localhost:8080
-- Data persistance implemented
+- Data persistance implemented (jdbc)
 - Contains info whether the Notification has been read
 
 # Requirements:
@@ -9,7 +9,7 @@ Spring framework Java application - Notifications API
 - maven (`apt-get install maven` for linux)
 
 # Steps:
-- Clone this repo and cd into the repo folder `cd BoundaryNotifications`
+- clone this repo and cd into the repo folder `cd BoundaryNotifications`
 - execute `mvn spring-boot:run`
 - execute test application with `python BoundaryNotificationsTest.py` (find appropriate Notification id to be updated)
 
