@@ -45,6 +45,18 @@ public class NotificationController {
 					return new Notification(rs.getLong("id"), rs.getInt("user_id"), rs.getInt("timestamp"), rs.getInt("is_read"), rs.getString("message"));
 				}
 			});
+		boolean firstPass = true;
+		String idList = "";
+		for (Notification resultInstance : resultList) {
+			if (firstPass) {
+				idList += resultInstance.getId();
+				firstPass = false;
+			} else {
+				idList = resultInstance.getId()+ ", " + idList;
+			}
+		}
+		idList = "UPDATE notifications SET is_read = 1 WHERE id IN (" + idList + ")";
+        jdbcTemplate.update(idList);
 		Notification[] notifications = new Notification[resultList.size()];
 		notifications = resultList.toArray(notifications);
         return notifications;
@@ -91,8 +103,6 @@ public class NotificationController {
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 
-        jdbcTemplate.update(
-			"UPDATE notifications SET message = ? WHERE id = ?",
-			new Object[] {newMessage, id});
+        jdbcTemplate.update("UPDATE notifications SET message = ? WHERE id = ?", new Object[] {newMessage, id});
     }
 }
