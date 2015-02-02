@@ -62,7 +62,6 @@ public class NotificationController {
         dataSource.setPassword("");
 
 		// insert new Notification and retrieve new record's key
-        SimpleJdbcTemplate simpleJdbcTemplate = new SimpleJdbcTemplate(dataSource);
         SimpleJdbcInsert insertNotification = new SimpleJdbcInsert(dataSource);
         insertNotification.withTableName("notifications");
         insertNotification.usingGeneratedKeyColumns("id");

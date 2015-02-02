@@ -27,15 +27,5 @@ public class Application {
 
         //jdbcTemplate.execute("drop table notifications if exists");
         jdbcTemplate.execute("create table if not exists notifications(id serial, user_id integer, timestamp integer, message varchar(255))");
-
-        /*dummy code to populate data*/
-        /*
-        String[] messages = "One;Two;Three;Four;Five;Six;Seven;Eight;Nine;Ten".split(";");
-        int uid = 1000, ts = 5000;
-        for (String message : messages) {
-            jdbcTemplate.update("INSERT INTO notifications(user_id, timestamp, message) values(?,?,?)", uid, ts, message);
-            uid++; ts+=5;
-        }
-        */
 	}
 }
