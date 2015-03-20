@@ -1,6 +1,5 @@
 # BoundaryNotifications
 ## Description:
-The exercise has two components:
 - Write an HTTP service that has two endpoints:
   * POST /notifications - which accepts the following Notification data structure in JSON:
 <pre>
@@ -12,10 +11,9 @@ and returns the following:
 </pre>
   * GET /notifications/by_user/<user_id> - which returns a JSON list of the last N Notifications in time (priority) order descending
 
-Bonus points: 
- - Extend the API and service to allow for editing a notification. 
- - Keep track of which notifications have been read and return this information in the GET.
- - Add a persistence layer optimized for access patterns.
+- Extend the API and service to allow for editing a notification. 
+- Keep track of which notifications have been read and return this information in the GET.
+- Add a persistence layer optimized for access patterns.
 
 ## Spring framework Java application - Notifications API
 - Server runs on http://localhost:8080
